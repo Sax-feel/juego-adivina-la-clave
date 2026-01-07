@@ -1,0 +1,928 @@
+/* Variables de fuentes */
+:root {
+    --font-titulo: 'Dancing Script', cursive;
+    --font-subtitulo: 'Playfair Display', serif;
+    --font-texto: 'Raleway', sans-serif;
+
+    /* Colores existentes */
+    --color-guindo: #5a0019;
+    --color-guindo-claro: #7a1c3a;
+    --color-vino: #722f37;
+    --color-vino-claro: #8c4a52;
+    --color-blanco: #f5f5f5;
+    --color-blanco-oscuro: #e8e8e8;
+    --color-oscuro: #2c0c14;
+    --color-oro: #c9a959;
+    --color-sombra: rgba(90, 0, 25, 0.3);
+}
+
+/* Aplicar fuentes a todo el juego */
+.game-container {
+    font-family: var(--font-texto);
+}
+
+/* Título principal */
+.game-header h1 {
+    font-family: var(--font-titulo);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, var(--color-blanco), var(--color-oro));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px var(--color-sombra);
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+/* Subtítulo */
+.game-subtitle {
+    font-family: var(--font-subtitulo);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--color-blanco-oscuro);
+    margin-top: 0;
+    font-weight: 400;
+}
+
+/* Títulos dentro del juego */
+.instructions h3,
+.pistas-section h3,
+.progreso-clave h4 {
+    font-family: var(--font-subtitulo);
+    font-weight: 600;
+    color: var(--color-oro);
+}
+
+/* Modal titles */
+.modal-title {
+    font-family: var(--font-titulo);
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+/* Labels del formulario */
+.form-label {
+    font-family: var(--font-subtitulo);
+    font-weight: 500;
+}
+
+/* Botones (mantener legibilidad) */
+.submit-button,
+.reset-button,
+.pista-button,
+.modal-button {
+    font-family: var(--font-texto);
+    font-weight: 600;
+}
+
+/* Texto especial en el modal */
+.modal-line {
+    font-family: var(--font-texto);
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Tipografía responsiva */
+@media (max-width: 768px) {
+    .game-header h1 {
+        font-size: 2.8rem;
+    }
+
+    .modal-title {
+        font-size: 2.2rem;
+    }
+
+    .game-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-header h1 {
+        font-size: 2.3rem;
+    }
+
+    .modal-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Variables de colores (tonalidades oscuras) */
+:root {
+    --color-guindo: #5a0019;
+    --color-guindo-claro: #7a1c3a;
+    --color-vino: #722f37;
+    --color-vino-claro: #8c4a52;
+    --color-blanco: #f5f5f5;
+    --color-blanco-oscuro: #e8e8e8;
+    --color-oscuro: #2c0c14;
+    --color-oro: #c9a959;
+    --color-sombra: rgba(90, 0, 25, 0.3);
+}
+
+.game-container {
+    min-height: 100vh;
+    background: linear-gradient(180deg, rgb(237, 124, 141) 0%, rgb(153, 44, 57) 100%);
+    color: var(--color-blanco);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.game-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, var(--color-guindo), var(--color-guindo-claro));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px var(--color-sombra);
+    letter-spacing: 1px;
+}
+
+.game-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-blanco-oscuro);
+    font-style: italic;
+    margin-top: 0;
+}
+
+.game-card {
+    background-color: rgba(44, 12, 20, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    max-width: 800px;
+    width: 100%;
+    border: 1px solid var(--color-vino);
+}
+
+.game-form {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-blanco);
+}
+
+.form-input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid var(--color-vino);
+    background-color: rgba(245, 245, 245, 0.1);
+    color: var(--color-blanco);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-oro);
+    box-shadow: 0 0 0 3px rgba(201, 169, 89, 0.3);
+    background-color: rgba(245, 245, 245, 0.15);
+}
+
+.form-input::placeholder {
+    color: rgba(245, 245, 245, 0.5);
+    font-style: italic;
+}
+
+.input-hint {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: var(--color-blanco-oscuro);
+    font-style: italic;
+}
+
+/* Sección de pistas */
+.pistas-section {
+    background-color: rgba(90, 0, 25, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid var(--color-guindo-claro);
+}
+
+.pistas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.pistas-header h3 {
+    margin: 0;
+    color: var(--color-oro);
+}
+
+.pista-button {
+    padding: 10px 20px;
+    background-color: var(--color-vino);
+    color: var(--color-blanco);
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pista-button:hover:not(:disabled) {
+    background-color: var(--color-vino-claro);
+    transform: translateY(-2px);
+}
+
+.pista-button:disabled {
+    background-color: var(--color-guindo-claro);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.pistas-container {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.pistas-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.pista-item {
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: rgba(122, 28, 58, 0.4);
+    border-radius: 6px;
+    border-left: 4px solid var(--color-oro);
+    animation: fadeIn 0.5s ease;
+}
+
+.pista-numero {
+    font-weight: 700;
+    color: var(--color-oro);
+    margin-right: 8px;
+}
+
+.pista-placeholder {
+    color: rgba(245, 245, 245, 0.7);
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+}
+
+/* Botones del formulario */
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.submit-button,
+.reset-button {
+    flex: 1;
+    min-width: 200px;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.submit-button {
+    background-color: var(--color-guindo);
+    color: var(--color-blanco);
+}
+
+.submit-button:hover {
+    background-color: var(--color-guindo-claro);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(90, 0, 25, 0.4);
+}
+
+.reset-button {
+    background-color: transparent;
+    color: var(--color-blanco);
+    border: 2px solid var(--color-vino);
+}
+
+.reset-button:hover {
+    background-color: rgba(114, 47, 55, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Estadísticas del juego */
+.game-stats {
+    background-color: rgba(114, 47, 55, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.intentos-count {
+    font-weight: 700;
+    color: var(--color-oro);
+    font-size: 1.3rem;
+}
+
+.game-tip {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(201, 169, 89, 0.1);
+    border-radius: 6px;
+    border-left: 3px solid var(--color-oro);
+}
+
+/* Instrucciones */
+.instructions {
+    background-color: rgba(122, 28, 58, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    border-top: 2px solid var(--color-vino);
+}
+
+.instructions h3 {
+    color: var(--color-oro);
+    margin-top: 0;
+}
+
+.instructions ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.instructions li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Pie de página */
+.game-footer {
+    margin-top: 30px;
+    text-align: center;
+    color: var(--color-blanco-oscuro);
+    font-size: 0.9rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Animación para las pistas */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .game-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .game-card {
+        padding: 20px;
+    }
+
+    .pistas-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .pista-button {
+        width: 100%;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .submit-button,
+    .reset-button {
+        min-width: 100%;
+    }
+}
+
+/* Ventana Modal a Pantalla Completa */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.4s ease;
+    padding: 20px;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, var(--color-oscuro), var(--color-guindo));
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    border: 2px solid var(--color-oro);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    position: relative;
+    overflow: hidden;
+    animation: modalSlideIn 0.5s ease;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content.exito {
+    border-color: var(--color-oro);
+    background: linear-gradient(145deg, #2c0c14, #5a0019);
+}
+
+.modal-content.error {
+    border-color: #ff6b6b;
+    background: linear-gradient(145deg, #2c0c14, #7a1c3a);
+}
+
+.modal-header {
+    padding: 30px 30px 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 2.5rem;
+    color: var(--color-oro);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+}
+
+.modal-content.error .modal-title {
+    color: #ff9e9e;
+}
+
+.modal-icon {
+    font-size: 4rem;
+    margin: 15px 0;
+    animation: pulse 1.5s infinite;
+}
+
+.modal-body {
+    padding: 25px 30px;
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 50vh;
+}
+
+.modal-line {
+    margin: 15px 0;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--color-blanco);
+    text-align: center;
+}
+
+.modal-content.exito .modal-line {
+    font-size: 1.4rem;
+}
+
+.modal-footer {
+    padding: 20px 30px 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    border-top: 1px solid rgba(245, 245, 245, 0.1);
+    flex-wrap: wrap;
+}
+
+.modal-button {
+    padding: 16px 32px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.exito-button {
+    background: linear-gradient(to right, var(--color-oro), #e6c158);
+    color: var(--color-oscuro);
+}
+
+.exito-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(201, 169, 89, 0.4);
+    background: linear-gradient(to right, #e6c158, var(--color-oro));
+}
+
+.error-button {
+    background: linear-gradient(to right, var(--color-vino), #9a5a62);
+    color: var(--color-blanco);
+}
+
+.error-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(114, 47, 55, 0.4);
+    background: linear-gradient(to right, #9a5a62, var(--color-vino));
+}
+
+.pista-button-modal {
+    background: linear-gradient(to right, var(--color-guindo), var(--color-guindo-claro));
+    color: var(--color-blanco);
+}
+
+.pista-button-modal:hover:not(:disabled) {
+    background: linear-gradient(to right, var(--color-guindo-claro), var(--color-guindo));
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(90, 0, 25, 0.4);
+}
+
+.pista-button-modal:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(245, 245, 245, 0.1);
+    border: none;
+    color: var(--color-blanco);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: rgba(245, 245, 245, 0.2);
+    transform: rotate(90deg);
+}
+
+/* Animaciones para la modal */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Efectos de confeti para éxito */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-oro);
+    opacity: 0.8;
+    z-index: 999;
+}
+
+/* Estilos responsivos para la modal */
+@media (max-width: 768px) {
+    .modal-title {
+        font-size: 2rem;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-line {
+        font-size: 1.1rem;
+    }
+
+    .modal-button {
+        min-width: 100%;
+        padding: 14px 20px;
+        font-size: 1.1rem;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-overlay {
+        padding: 10px;
+    }
+
+    .modal-content {
+        border-radius: 15px;
+    }
+
+    .modal-title {
+        font-size: 1.8rem;
+    }
+
+    .modal-icon {
+        font-size: 3rem;
+    }
+}
+
+/* Confetti simple */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -50px;
+    text-align: center;
+    animation: fall linear forwards;
+    opacity: 0.8;
+}
+
+.confetti-piece.heart {
+    font-size: inherit;
+    animation: fall linear forwards, pulse 2s ease-in-out infinite;
+}
+
+.confetti-piece.shape {
+    animation: fall linear forwards, sway 3s ease-in-out infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: translateY(var(--fall-progress)) scale(1);
+    }
+
+    50% {
+        transform: translateY(var(--fall-progress)) scale(1.2);
+    }
+}
+
+@keyframes sway {
+
+    0%,
+    100% {
+        transform: translateY(var(--fall-progress)) translateX(0);
+    }
+
+    50% {
+        transform: translateY(var(--fall-progress)) translateX(30px);
+    }
+}
+
+/* Progreso de la clave */
+.progreso-clave {
+    background-color: rgba(122, 28, 58, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid var(--color-vino);
+}
+
+.progreso-clave h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--color-oro);
+    text-align: center;
+}
+
+.progreso-barras {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.progreso-item {
+    flex: 1;
+    background-color: rgba(90, 0, 25, 0.3);
+    border-radius: 8px;
+    padding: 15px 10px;
+    text-align: center;
+    position: relative;
+    border: 2px solid var(--color-vino);
+    transition: all 0.3s ease;
+}
+
+.progreso-item.completado {
+    background-color: rgba(90, 0, 25, 0.6);
+    border-color: var(--color-oro);
+}
+
+.progreso-numero {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-vino);
+    color: var(--color-blanco);
+    border-radius: 50%;
+    line-height: 30px;
+    margin: 0 auto 10px;
+    font-weight: bold;
+}
+
+.progreso-item.completado .progreso-numero {
+    background-color: var(--color-oro);
+    color: var(--color-oscuro);
+}
+
+.progreso-texto {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-blanco-oscuro);
+}
+
+.progreso-item.completado .progreso-texto {
+    color: var(--color-oro);
+    font-weight: bold;
+}
+
+.progreso-check {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: var(--color-oro);
+    color: var(--color-oscuro);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 3px 10px rgba(201, 169, 89, 0.5);
+    animation: pulse 1.5s infinite;
+}
+
+.partes-count {
+    font-weight: 700;
+    color: var(--color-oro);
+    font-size: 1.3rem;
+}
+
+/* Estilos para el modal de éxito parcial */
+.modal-content.exito_parcial {
+    border-color: var(--color-oro);
+    background: linear-gradient(145deg, #2c0c14, #5a0019);
+}
+
+.modal-content.exito_parcial .modal-title {
+    color: var(--color-oro);
+}
+
+.exito_parcial-button {
+    background: linear-gradient(to right, var(--color-vino), #9a5a62);
+    color: var(--color-blanco);
+}
+
+.exito_parcial-button:hover {
+    background: linear-gradient(to right, #9a5a62, var(--color-vino));
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(114, 47, 55, 0.4);
+}
+
+/* Responsividad para el progreso */
+@media (max-width: 768px) {
+    .progreso-barras {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .progreso-item {
+        padding: 12px;
+    }
+}
+
+/* Efecto brillante para el título principal */
+.game-header h1 {
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.game-header h1::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-oro), transparent);
+    z-index: -1;
+}
+
+/* Efecto de sombra en texto */
+.modal-title {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(201, 169, 89, 0.3);
+}
+
+/* Animación sutil para subtítulos */
+.game-subtitle {
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
