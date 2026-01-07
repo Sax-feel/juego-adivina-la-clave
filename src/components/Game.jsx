@@ -169,7 +169,7 @@ const Game = () => {
             // Mostrar modal de éxito completo
             mostrarModal(
                 "¡Felicidades! 🎉",
-                `¡Lo lograste!\n\nHas descubierto el nombre y la clave secreta.\nIntentos: ${intentos + 1}\n\nEl nombre especial: ${RESPUESTA_CORRECTA_NOMBRE}\nLa clave secreta: ${RESPUESTA_CORRECTA_CLAVE}\n\n¡Eres increíble! 💖`,
+                `¡Lo lograste!\n\nHas descubierto el nombre y la clave secreta.\nCaptura esta pantalla y mandasela a tu novio`,
                 "exito"
             );
 
@@ -414,7 +414,8 @@ const Game = () => {
                         <li>Intenta adivinar cómo me gustaria llamarte (dos palabras)</li>
                         <li>Descubre la clave secreta con la ayuda de las pistas</li>
                         <li>¡Recibirás felicitaciones cuando adivines cada parte de la clave!</li>
-                        <li>Primero adivina el nombre o la clave, no ambas al mismo tiempo</li>
+                        <li>Primero adivina la clave!</li>
+                        <li>Completa los 3 campos de la clave y luego pon el nombre para verificar la respuesta!!</li>
                         <li>¡Diviértete!</li>
                     </ul>
                 </div>
