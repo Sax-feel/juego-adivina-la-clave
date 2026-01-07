@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/juego-adivina-la-clave/static/css/main.1ba9d10f.css",
+    "main.js": "/juego-adivina-la-clave/static/js/main.23632852.js",
+    "index.html": "/juego-adivina-la-clave/index.html",
+    "main.1ba9d10f.css.map": "/juego-adivina-la-clave/static/css/main.1ba9d10f.css.map",
+    "main.23632852.js.map": "/juego-adivina-la-clave/static/js/main.23632852.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ba9d10f.css",
+    "static/js/main.23632852.js"
+  ]
+}
