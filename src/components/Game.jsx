@@ -64,7 +64,7 @@ const Game = () => {
     const [modalTipo, setModalTipo] = useState("");
 
     const pistas = [
-        "La primera parte tiene que ver con una fecha importante (sólo día)",
+        "La primera parte tiene que ver con una fecha importante (sólo dia)",
         "La segunda parte tiene que ver con nuestras inciales iguales",
         "La última parte tiene que ver con una fecha donde empezaste todo",
         "Cada parte esta separada por un guión",
