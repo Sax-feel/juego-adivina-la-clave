@@ -45,7 +45,7 @@ const Confetti = () => {
 
 const Game = () => {
     const RESPUESTA_CORRECTA_NOMBRE = "mi amor";
-    const RESPUESTA_CORRECTA_CLAVE = "20-JJ-10122023";
+    const RESPUESTA_CORRECTA_CLAVE = "20-JJ-10122024";
 
     const [nombre, setNombre] = useState("");
     const [clave, setClave] = useState("");
