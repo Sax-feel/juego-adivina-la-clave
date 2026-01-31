@@ -114,11 +114,11 @@ const Game = () => {
             mensajeParcial = "¡Has adivinado las iniciales!\n\n✅ Tienes correcto: 'JJ'\n\n¡Perfecto! Ya tienes nuestras iniciales iguales.\n\nAhora solo falta la última parte...";
         }
         
-        if ((claveUpper.includes("10122023") || claveUpper.includes("10/12/2023") || claveUpper.includes("10-12-2023")) && !partesAdivinadas.tercera) {
+        if ((claveUpper.includes("10122024") || claveUpper.includes("10/12/2024") || claveUpper.includes("10-12-20244")) && !partesAdivinadas.tercera) {
             nuevasPartes.tercera = true;
             mostrarModalParcial = true;
             tituloParcial = "¡Increíble! 💖";
-            mensajeParcial = "¡Has adivinado la fecha especial!\n\n✅ Tienes correcto: '10122023'\n\n¡Qué memoria! Esa fecha es muy importante para mí.\n\nAhora solo falta juntar todas las partes correctamente...";
+            mensajeParcial = "¡Has adivinado la fecha especial!\n\n✅ Tienes correcto: '10122024'\n\n¡Qué memoria! Esa fecha es muy importante para mí.\n\nAhora solo falta juntar todas las partes correctamente...";
         }
         
         if (JSON.stringify(nuevasPartes) !== JSON.stringify(partesAdivinadas)) {
@@ -174,7 +174,7 @@ const Game = () => {
                     
                     if (partesActualizadas.primera) mensaje += "\n✅ Tienes la primera parte (20)";
                     if (partesActualizadas.segunda) mensaje += "\n✅ Tienes las iniciales (JJ)";
-                    if (partesActualizadas.tercera) mensaje += "\n✅ Tienes la fecha (10122023)";
+                    if (partesActualizadas.tercera) mensaje += "\n✅ Tienes la fecha (10122024)";
                     
                     mensaje += "\n\n💡 Recuerda: Las partes deben ir separadas por guiones: XX-XX-XXXXXXXX";
                 }
