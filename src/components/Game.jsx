@@ -1,23 +1,20 @@
 import { useState, useEffect } from 'react';
 import './Game.css';
 
-// Componente Confetti (opcional)
 const Confetti = () => {
-    const pieces = 400; // Número de piezas de confeti
+    const pieces = 400; 
 
     return (
         <div className="confetti-container">
             {Array.from({ length: pieces }).map((_, i) => {
                 const left = Math.random() * 100;
-                const duration = Math.random() * 15 + 10; // 10-25 segundos
-                const delay = Math.random() * 5; // Retraso aleatorio
-                const size = Math.random() * 25 + 10; // 10-35px
+                const duration = Math.random() * 15 + 10;
+                const delay = Math.random() * 5;
+                const size = Math.random() * 25 + 10;
 
-                // Decidir si es corazón o forma normal
                 const isHeart = Math.random() > 0.6;
                 const heartEmoji = ['❤️', '💖', '💗', '💓', '💞', '💕'][Math.floor(Math.random() * 6)];
-
-                // Colores en tonos del tema
+            
                 const colors = ['#ff6b8b', '#ff9e9e', '#ffd166', '#c9a959', '#ff8e8e', '#ffb4b4'];
                 const color = colors[Math.floor(Math.random() * colors.length)];
 
@@ -47,38 +44,32 @@ const Confetti = () => {
 };
 
 const Game = () => {
-    // Respuestas correctas (puedes cambiarlas)
     const RESPUESTA_CORRECTA_NOMBRE = "mi amor";
     const RESPUESTA_CORRECTA_CLAVE = "20-JJ-10122023";
 
-    // Estados del juego
     const [nombre, setNombre] = useState("");
     const [clave, setClave] = useState("");
     const [pistaVisible, setPistaVisible] = useState(0);
     const [intentos, setIntentos] = useState(0);
     
-    // Estados para trackear qué partes de la clave se han adivinado
     const [partesAdivinadas, setPartesAdivinadas] = useState({
         primera: false,
         segunda: false,
         tercera: false
     });
 
-    // Estado para controlar la ventana modal
     const [modalVisible, setModalVisible] = useState(false);
     const [modalTitulo, setModalTitulo] = useState("");
     const [modalMensaje, setModalMensaje] = useState("");
-    const [modalTipo, setModalTipo] = useState(""); // "exito", "error", "exito_parcial"
+    const [modalTipo, setModalTipo] = useState("");
 
-    // Pistas que se revelarán gradualmente
     const pistas = [
         "La primera parte tiene que ver con una fecha importante (sólo día)",
         "La segunda parte tiene que ver con nuestras inciales iguales",
         "La última parte tiene que ver con una fecha donde empezaste todo",
         "Cada parte esta separada por un guión",
     ];
-
-    // Evitar scroll cuando el modal está abierto
+    
     useEffect(() => {
         if (modalVisible) {
             document.body.style.overflow = 'hidden';
@@ -86,13 +77,11 @@ const Game = () => {
             document.body.style.overflow = 'auto';
         }
 
-        // Cleanup
         return () => {
             document.body.style.overflow = 'auto';
         };
     }, [modalVisible]);
 
-    // Mostrar ventana modal
     const mostrarModal = (titulo, mensaje, tipo) => {
         setModalTitulo(titulo);
         setModalMensaje(mensaje);
@@ -100,12 +89,10 @@ const Game = () => {
         setModalVisible(true);
     };
 
-    // Cerrar ventana modal
     const cerrarModal = () => {
         setModalVisible(false);
     };
 
-    // Verificar si la clave contiene partes específicas
     const verificarPartesClave = (claveIngresada) => {
         const claveUpper = claveIngresada.toUpperCase();
         let nuevasPartes = { ...partesAdivinadas };
@@ -113,7 +100,6 @@ const Game = () => {
         let mensajeParcial = "";
         let tituloParcial = "";
         
-        // Verificar primera parte (20)
         if (claveUpper.includes("20") && !partesAdivinadas.primera) {
             nuevasPartes.primera = true;
             mostrarModalParcial = true;
@@ -121,7 +107,6 @@ const Game = () => {
             mensajeParcial = "¡Has adivinado la primera parte de la clave!\n\n✅ Tienes correcto: '20'\n\nAhora falta el resto...\n\nPista: Las siguientes partes son nuestras iniciales y una fecha especial.";
         }
         
-        // Verificar segunda parte (JJ)
         if ((claveUpper.includes("JJ") || claveUpper.includes("-JJ") || claveUpper.includes("JJ-")) && !partesAdivinadas.segunda) {
             nuevasPartes.segunda = true;
             mostrarModalParcial = true;
@@ -129,7 +114,6 @@ const Game = () => {
             mensajeParcial = "¡Has adivinado las iniciales!\n\n✅ Tienes correcto: 'JJ'\n\n¡Perfecto! Ya tienes nuestras iniciales iguales.\n\nAhora solo falta la última parte...";
         }
         
-        // Verificar tercera parte (10122023)
         if ((claveUpper.includes("10122023") || claveUpper.includes("10/12/2023") || claveUpper.includes("10-12-2023")) && !partesAdivinadas.tercera) {
             nuevasPartes.tercera = true;
             mostrarModalParcial = true;
@@ -137,11 +121,9 @@ const Game = () => {
             mensajeParcial = "¡Has adivinado la fecha especial!\n\n✅ Tienes correcto: '10122023'\n\n¡Qué memoria! Esa fecha es muy importante para mí.\n\nAhora solo falta juntar todas las partes correctamente...";
         }
         
-        // Actualizar estado de partes adivinadas
         if (JSON.stringify(nuevasPartes) !== JSON.stringify(partesAdivinadas)) {
             setPartesAdivinadas(nuevasPartes);
             
-            // Mostrar modal parcial si se adivinó una nueva parte
             if (mostrarModalParcial) {
                 setTimeout(() => {
                     mostrarModal(tituloParcial, mensajeParcial, "exito_parcial");
@@ -152,28 +134,22 @@ const Game = () => {
         return nuevasPartes;
     };
 
-    // Manejar envío del formulario
     const handleSubmit = (e) => {
         e.preventDefault();
         setIntentos(intentos + 1);
 
-        // Convertir a minúsculas y eliminar espacios extras para comparación
         const nombreLimpio = nombre.toLowerCase().trim();
-        const claveLimpia = clave.trim(); // No convertir a minúsculas para mantener JJ en mayúsculas
+        const claveLimpia = clave.trim();
 
-        // Primero verificar si hay partes de la clave adivinadas
         const partesActualizadas = verificarPartesClave(claveLimpia);
 
-        // Verificar si ambas respuestas son correctas
-        if (nombreLimpio === RESPUESTA_CORRECTA_NOMBRE && claveLimpia === RESPUESTA_CORRECTA_CLAVE) {
-            // Mostrar modal de éxito completo
+        if (nombreLimpio === RESPUESTA_CORRECTA_NOMBRE && claveLimpia === RESPUESTA_CORRECTA_CLAVE) {            
             mostrarModal(
                 "¡Felicidades! 🎉",
                 `¡Lo lograste!\n\nHas descubierto el nombre y la clave secreta.\nCaptura esta pantalla y mandasela a tu novio`,
                 "exito"
             );
 
-            // Reiniciar juego después de un tiempo
             setTimeout(() => {
                 setNombre("");
                 setClave("");
@@ -182,7 +158,6 @@ const Game = () => {
                 setPartesAdivinadas({ primera: false, segunda: false, tercera: false });
             }, 3000);
         } else {
-            // Determinar qué está mal
             let titulo = "Respuesta incorrecta";
             let mensaje = "";
 
@@ -191,10 +166,8 @@ const Game = () => {
             } else if (nombreLimpio !== RESPUESTA_CORRECTA_NOMBRE) {
                 mensaje = "El nombre es incorrecto. Pero vas por buen camino...";
             } else {
-                // Solo la clave es incorrecta
                 mensaje = "La clave es incorrecta. ¡Ya tienes el nombre!";
                 
-                // Mostrar progreso actual si ya se adivinaron algunas partes
                 const partesAdivinadasCount = Object.values(partesActualizadas).filter(Boolean).length;
                 if (partesAdivinadasCount > 0) {
                     mensaje += `\n\n📊 Progreso: ${partesAdivinadasCount}/3 partes de la clave adivinadas`;
@@ -207,7 +180,6 @@ const Game = () => {
                 }
             }
 
-            // Sugerir usar pistas si hay intentos fallidos
             if (intentos >= 2) {
                 mensaje += "\n\n💡 Sugerencia: Usa el botón 'Revelar pista' para obtener ayuda.";
             }
@@ -216,14 +188,12 @@ const Game = () => {
         }
     };
 
-    // Revelar la siguiente pista
     const revelarPista = () => {
         if (pistaVisible < pistas.length) {
             setPistaVisible(pistaVisible + 1);
         }
     };
 
-    // Reiniciar juego
     const reiniciarJuego = () => {
         setNombre("");
         setClave("");
